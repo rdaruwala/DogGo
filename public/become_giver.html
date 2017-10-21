@@ -1,4 +1,38 @@
 <!DOCTYPE html>
+<script type="text/javascript">
+    function submitValues(){
+		OwnerFirst = document.getElementById('firstName').value;
+    OwnerMid = document.getElementById('midInit').value;
+    OwnerLast = document.getElementById('lastName').value;
+    Email = document.getElementById('email').value;
+    Phone = document.getElementById('phoneNum').value;
+    Address = document.getElementById('address').value;
+    ZipCode = document.getElementById('zipCode').value;
+    PetName = document.getElementById('petName').value;
+    PetSpecies = document.getElementById('petSpecies').value;
+    PetBreed = document.getElementById('petBreed').value;
+    
+    Image = document.getElementById('petPicToUpload').
+    
+    if(!(OwnerFirst && OwnerMid && OwnerLast && Email && Phone && Address && ZipCode && PetName && PetSpecies && PetBreed)){
+      alert("Please submit all the required fields")
+    }
+    else{
+      
+      $.ajax({
+        type: "POST",
+        dataType: "jsonp",
+        url: 'http://junesky.org/parse/classes/GiverInfo',
+        success: function (result) {
+          console.log(result);
+        }
+      });
+      
+      
+      
+    }
+    }
+</script>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -28,11 +62,12 @@
           <p> Email: </p><input type="text" name="email" id="email"> <br>
           <p> Phone Number: </p><input type="text" name="phoneNum" id="phoneNum"> <br>
           <p> Address: </p><input type="text" name="address" id="address"> <br>
-          <p> Zip: </p><input type="text" name="firstName" id="firstName"> <br>
-          <p> Pet Species: </p><input type="text" name="firstName" id="firstName"> <br>
-          <p> Breed: </p><input type="text" name="firstName" id="firstName"> <br>
-          <a class="primary-button">Submit</a>
-        </form>
+          <p> Zip: </p><input type="text" name="zipCode" id="zipCode"> <br>
+          <p> Pet Name: </p><input type="text" name="petName" id="petName"> <br>
+          <p> Pet Species: </p><input type="text" name="petSpecies" id="petSpecies"> <br>
+          <p> Breed: </p><input type="text" name="petBreed" id="petBreed"> <br>
+		  <input type="button" value="click" onclick="submitValues();"/>
+		  </form>
       </div>
     </section>
   </body>
