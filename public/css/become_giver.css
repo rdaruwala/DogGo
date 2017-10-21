@@ -5,8 +5,8 @@ body {
 }
 
 .sitecontainer {
-	display: grid;
-	grid-template-columns: 4% 28% 4% 14% 14% 4% 28% 4%;
+  display: grid;
+  grid-template-columns: 4% 28% 4% 14% 14% 4% 28% 4%;
   grid-template-rows: auto 93.5vh 20vh 65vh;
 }
 
@@ -19,8 +19,8 @@ body {
 .menubar {
   font-size: 10px;
   background: #4286f4;
-	grid-column: span 8;
-	grid-row: 1;
+  grid-column: span 8;
+  grid-row: 1;
   display: inline;
 }
 
@@ -56,62 +56,6 @@ li a:hover {
   margin-left: 1.5vw;
 }
 
-/* styling for the cover image */
-
-.intro-cover {
-  grid-column: span 8;
-  grid-row: 2;
-  background-image: url(../img/golden_retriever_2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-align: center;
-}
-
-.cover-header {
-  margin-top: 70vh;
-  font-weight: lighter;
-  letter-spacing: 0.1em;
-  color: white;
-}
-
-/* styling for the mission statement */
-
-.mission {
-  margin-top: 5vh;
-  grid-column-start: 4;
-  grid-column-end: 6;
-  grid-row: 3;
-  text-align: center;
-}
-
-hr {
-  margin-top: 5vh;
-}
-
-/* styling for the givers div */
-
-.givers {
-  margin-top: 17vh;
-  grid-column-start: 2;
-  grid-column-end: 5;
-  grid-row: 4;
-  text-align: center;
-}
-
-/* styling for the adopters div */
-
-.adopters {
-  margin-top: 17vh;
-  grid-column-start: 5;
-  grid-column-end: 8;
-  grid-row: 4;
-  text-align: center;
-}
-
-.adopter-giver-info {
-  padding: 0vw 1vw 3vw 1vw;
-}
-
 /* styling for the buttons */
 .primary-button {
   text-decoration: none;
@@ -129,5 +73,21 @@ hr {
 }
 
 .primary-button:hover {
+  cursor: crosshair;
   background-color: #001230;
+}
+
+/* styling for the input form */
+
+.input-form {
+  grid-column: span 8;
+}
+
+.input-form p {
+  padding: 0;
+  margin: 0;
+}
+
+.input-form input {
+  margin-bottom: 15px;
 }
