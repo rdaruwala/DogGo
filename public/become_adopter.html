@@ -23,42 +23,30 @@
       <div class="header">
         <h1>Become an Adopter</h1>
       </div>
+      <div class="minor-header-left">
+        <h3>Tell us about your preferences:</h3>
+      </div>
+      <div class="or">
+        <h4>OR</h4>
+      </div>
+      <div class="minor-header-right">
+        <h3>Let us pick for you:
+      </div>
+      <div class="input1">
+        <p>Pet Species: </p><input type="text" name="petSpecies" id="petSpecies"> <br>
+      </div>
+      <div class="input2">
+        <p>Breed: </p><input type="text" name="petBreed" id="petBreed"> <br>
+      </div>
+      <div class="input3">
+        <p>How long are you willing to keep a pet for?</p><input type="text" name="length" id="length"> <br>
+      </div>
       <div class="picture-upload">
-        <p> Choose a picture: </p><br>
+        <p> Choose a picture </p><br>
         <img id="petPic" src=img/gray.jpeg /> <br>
         <form id="form1" runat="server">
           <input type="file" name="petPic" id="petPicToUpload" onchange="readURL(this)"> <br>
         </form>
-      </div>
-      <div class="input1">
-        <p> First Name: </p><input type="text" name="firstName" id="firstName">
-      </div>
-      <div class="input2">
-        <p> Middle Initial: </p><input type="text" name="midInit" id="midInit">
-      </div>
-      <div class="input3">
-        <p> Last Name: </p><input type="text" name="lastName" id="lastName">
-      </div>
-      <div class="input4">
-        <p> Email: </p><input type="text" name="email" id="email"> <br>
-      </div>
-      <div class="input5">
-        <p> Phone Number: </p><input type="text" name="phoneNum" id="phoneNum"> <br>
-      </div>
-      <div class="input6">
-        <p> Address: </p><input type="text" name="address" id="address"> <br>
-      </div>
-      <div class="input7">
-        <p> Zip: </p><input type="text" name="zipCode" id="zipCode"> <br>
-      </div>
-      <div class="input8">
-        <p> Pet Name: </p><input type="text" name="petName" id="petName"> <br>
-      </div>
-      <div class="input9">
-        <p> Pet Species: </p><input type="text" name="petSpecies" id="petSpecies"> <br>
-      </div>
-      <div class="input10">
-        <p> Breed: </p><input type="text" name="petBreed" id="petBreed"> <br>
       </div>
       <div class="submit-button">
         <a class="primary-button" onclick="submitValues();">Submit</a>

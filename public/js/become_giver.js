@@ -1,3 +1,5 @@
+var fileName = "";
+
 function submitValues(){
   OwnerFirst = document.getElementById('firstName').value;
   OwnerMid = document.getElementById('midInit').value;
@@ -12,15 +14,64 @@ function submitValues(){
   
   Image = document.getElementById('petPicToUpload');
   
-  if(!(OwnerFirst && OwnerMid && OwnerLast && Email && Phone && Address && ZipCode && PetName && PetSpecies && PetBreed)) {
+  if(!(url && OwnerFirst && OwnerMid && OwnerLast && Email && Phone && Address && ZipCode && PetName && PetSpecies && PetBreed)) {
     alert("Please submit all the required fields");
   }
   else{
-    var data = $('form').serialize();
-    
-    $.post('http://junesky.org/parse/classes/GiverInfo', data, function (result) {
+    var data = {
+      URL: url,
+      OwnerFirst: OwnerFirst,
+      OwnerMiddle: OwnerMid,
+      OwnerLast: OwnerLast,
+      OwnerEmail: Email,
+      OwnerPhone: Phone,
+      OwnerAddress: Address,
+      ZipCode: ZipCode,
+      PetName: PetName,
+      PetSpecies: PetSpecies,
+      PetBreed: PetBreed
+    }
+
+    console.log('data: ' + JSON.stringify(data));
+
+    $.post('http://doggo.run/tag', data, function (result) {
       console.log(result);
     });
+
+    // data.append('myFile.jpg', $('#petPicToUpload').prop('files')[0]);
+
+    // data.append('OwnerFirst', OwnerFirst);
+    // data.append('OwnerMiddle', OwnerMid);
+    // data.append('OwnerLast', OwnerLast);
+    // data.append('OwnerEmail', Email);
+    // data.append('OwnerPhone', Phone);
+    // data.append('OwnerAddress', Address);
+    // data.append('ZipCode', ZipCode);
+    // data.append('PetName', PetName);
+    // data.append('PetSpecies', PetSpecies);
+    // data.append('PetBreed', PetBreed);
+
+    // $.ajax({
+    //     type: "POST",
+    //     enctype: 'multipart/form-data',
+    //     url: "/api/upload/multi",
+    //     data: data,
+    //     processData: false,
+    //     contentType: false,
+    //     cache: false,
+    //     timeout: 600000,
+    //     success: function (data) {
+
+    //         console.log("SUCCESS : ", data);
+
+    //     },
+    //     error: function (e) {
+
+    //         console.log("ERROR : ", e);
+
+    //     }
+    // });
+
   }
 }
 

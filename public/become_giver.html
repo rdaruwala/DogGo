@@ -5,7 +5,8 @@
     <title>DogGo</title>
     <link rel="stylesheet" href="css/become_giver.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js/become_giver.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+
   </head>
   <body>
     <section class="sitecontainer">
@@ -23,46 +24,88 @@
       <div class="header">
         <h1>Become a Giver</h1>
       </div>
-      <div class="picture-upload">
-        <p> Choose a picture: </p><br>
-        <img id="petPic" src=img/gray.jpeg /> <br>
-        <form id="form1" runat="server">
-          <input type="file" name="petPic" id="petPicToUpload" onchange="readURL(this)"> <br>
-        </form>
-      </div>
-      <div class="input1">
-        <p> First Name: </p><input type="text" name="firstName" id="firstName">
-      </div>
-      <div class="input2">
-        <p> Middle Initial: </p><input type="text" name="midInit" id="midInit">
-      </div>
-      <div class="input3">
-        <p> Last Name: </p><input type="text" name="lastName" id="lastName">
-      </div>
-      <div class="input4">
-        <p> Email: </p><input type="text" name="email" id="email"> <br>
-      </div>
-      <div class="input5">
-        <p> Phone Number: </p><input type="text" name="phoneNum" id="phoneNum"> <br>
-      </div>
-      <div class="input6">
-        <p> Address: </p><input type="text" name="address" id="address"> <br>
-      </div>
-      <div class="input7">
-        <p> Zip: </p><input type="text" name="zipCode" id="zipCode"> <br>
-      </div>
-      <div class="input8">
-        <p> Pet Name: </p><input type="text" name="petName" id="petName"> <br>
-      </div>
-      <div class="input9">
-        <p> Pet Species: </p><input type="text" name="petSpecies" id="petSpecies"> <br>
-      </div>
-      <div class="input10">
-        <p> Breed: </p><input type="text" name="petBreed" id="petBreed"> <br>
-      </div>
-      <div class="submit-button">
-        <a class="primary-button" onclick="submitValues();">Submit</a>
-      </div>
+        <div class="picture-upload">
+          <p> Choose a picture </p><br>
+          <img id="petPic" src=img/gray.jpeg /> <br>
+          <form id="form1" runat="server">
+             <input type="file" id="fileButton" onchange="readURL(this)"/>
+          </form>
+        </div>
+        <div class="input1">
+          <p> First Name: </p><input type="text" name="firstName" id="firstName">
+        </div>
+        <div class="input2">
+          <p> Middle Initial: </p><input type="text" name="midInit" id="midInit">
+        </div>
+        <div class="input3">
+          <p> Last Name: </p><input type="text" name="lastName" id="lastName">
+        </div>
+        <div class="input4">
+          <p> Email: </p><input type="text" name="email" id="email"> <br>
+        </div>
+        <div class="input5">
+          <p> Phone Number: </p><input type="text" name="phoneNum" id="phoneNum"> <br>
+        </div>
+        <div class="input6">
+          <p> Address: </p><input type="text" name="address" id="address"> <br>
+        </div>
+        <div class="input7">
+          <p> Zip: </p><input type="text" name="zipCode" id="zipCode"> <br>
+        </div>
+        <div class="input8">
+          <p> Pet Name: </p><input type="text" name="petName" id="petName"> <br>
+        </div>
+        <div class="input9">
+          <p> Pet Species: </p><input type="text" name="petSpecies" id="petSpecies"> <br>
+        </div>
+        <div class="input10">
+          <p> Breed: </p><input type="text" name="petBreed" id="petBreed"> <br>
+        </div>
+        <div class="submit-button">
+          <a class="primary-button" onclick="submitValues();">Submit</a>
+        </div>
     </section>
   </body>
+  <script src="js/become_giver.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCMcRSNdiyjc3oejxk8LUINHX9-Pc4ajvY",
+        authDomain: "friendlychat-a8fb4.firebaseapp.com",
+        databaseURL: "https://friendlychat-a8fb4.firebaseio.com",
+        projectId: "friendlychat-a8fb4",
+        storageBucket: "friendlychat-a8fb4.appspot.com",
+        messagingSenderId: "973621490005"
+    };
+
+    firebase.initializeApp(config);
+   </script>
+   <script>
+      var fileButton = document.getElementById("fileButton");
+      fileButton.addEventListener('change', function(e){
+        var file = e.target.files[0];
+        var storageRef = firebase.storage().ref(file.name);
+        // snapshot=storageRef.put(file);
+        // var url = snapshot.downloadURL;
+        // alert(url);
+        var metadata = {
+          'contentType': file.type
+        };
+
+        storageRef.child('images/' + file.name).put(file, metadata).then(function(snapshot) {
+          console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+          console.log(snapshot.metadata);
+          url = snapshot.downloadURL;
+          console.log('File available at', url);
+          // [START_EXCLUDE]
+          // alert(url);
+          // document.getElementById('linkbox').innerHTML = '<a href="' +  url + '">Click For File</a>';
+          // [END_EXCLUDE]
+        }).catch(function(error) {
+          // [START onfailure]
+          console.error('Upload failed:', error);
+          // [END onfailure]
+        });
+      });  
+     </script>
 </html>
