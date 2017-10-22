@@ -34,7 +34,7 @@ function submitValues(){
 
     console.log('data: ' + JSON.stringify(data));
 
-    $.post('http://doggo.run/storegiver', data, function (result) {
+    $.post('http://doggo.run:5000/storegiver', data, function (result) {
       window.location.href = '/success.html';
     });
 
