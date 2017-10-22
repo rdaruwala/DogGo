@@ -18,7 +18,7 @@ body {
 
 .menubar {
   font-size: 10px;
-  background: #4286f4;
+  background: #4d80d1;
 	grid-column: span 8;
 	grid-row: 1;
   display: inline;
@@ -67,8 +67,16 @@ li a:hover {
   text-align: center;
 }
 
+.title {
+  font-weight: normal;
+  font-size: 50px;
+  font-family: Open Sans, sans-serif;
+  color: white;
+  margin-top: 10vh;
+}
+
 .cover-header {
-  margin-top: 70vh;
+  margin-top: 52vh;
   font-weight: lighter;
   letter-spacing: 0.1em;
   color: white;
@@ -120,7 +128,7 @@ hr {
   max-width: 20vw;
   height: 2em;
   margin: 0 auto;
-  background-color: #4286f4;
+  background-color: #4d80d1;
   color: white;
   border-color: #777777;
   border-style: solid;
