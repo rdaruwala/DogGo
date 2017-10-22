@@ -6,12 +6,13 @@ body {
 
 .sitecontainer {
   display: grid;
-  grid-template-columns: 7% 25% 3% 15% 15% 15% 15% 5%;
-  grid-template-rows: auto 2vh 11vh auto 3vh auto 3vh auto 3vh auto;
+  grid-template-columns: 5% 20% 13% 31% 25% 5%;
+  grid-template-rows: auto 2vh auto 0vh auto 0vh auto 3vh auto 3vh auto 3vh auto 3vh auto 3vh auto 3vh auto;
 }
 
 .sitecontainer div {
   font-size: 20px;
+  margin: 0;
 }
 
 /* styling for the menubar */
@@ -80,18 +81,58 @@ li a:hover {
 /* styling for the header */
 
 .header {
-  grid-column-start: 4;
-  grid-column-end: 6;
+  grid-column: 4;
   grid-row: 3;
-  padding-left: 40px;
+  padding-left: 30px;
 }
 
-/* styling for the input form */
+/* styling for the left side header */
+
+.minor-header-left {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row: 5;
+}
+
+/* styling for the or */
+
+.or {
+  grid-column: 4;
+  grid-row: 5;
+  padding-left: 150px;
+}
+
+/* styling for the right side header */
+
+.minor-header-right {
+  grid-column: 5;
+  grid-row: 5;
+}
+
+/* styling for the inputs */
+
+.input1 {
+  grid-column: 2;
+  grid-row: 7;
+}
+
+.input2 {
+  grid-column: 3;
+  grid-row: 7;
+}
+
+.input3 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row: 9;
+}
+
+/* styling for the picture upload */
 
 .picture-upload {
-  grid-column: 2;
-  grid-row-start: 4;
-  grid-row-end: 9;
+  grid-column: 5;
+  grid-row-start: 7;
+  grid-row-end: 10;
 }
 
 .picture-upload p {
@@ -99,68 +140,8 @@ li a:hover {
   margin-bottom: 0;
 }
 
-.input1 {
-  grid-column: 4;
-  grid-row: 4;
-  display: inline;
-}
-
-.input2 {
-  grid-column: 5;
-  grid-row: 4;
-  display: inline;
-}
-
-.input3 {
-  grid-column: 6;
-  grid-row: 4;
-  display: inline;
-}
-
-.input4 {
-  grid-column: 4;
-  grid-row: 6;
-  display: inline;
-}
-
-.input5 {
-  grid-column: 5;
-  grid-row: 6;
-  display: inline;
-}
-
-.input6 {
-  grid-column: 6;
-  grid-row: 6;
-  display: inline;
-}
-
-.input7 {
-  grid-column: 7;
-  grid-row: 6;
-  display: inline;
-}
-
-.input8 {
-  grid-column: 4;
-  grid-row: 8;
-  display: inline;
-}
-
-.input9 {
-  grid-column: 5;
-  grid-row: 8;
-  display: inline;
-}
-
-.input10 {
-  grid-column: 6;
-  grid-row: 8;
-  display: inline;
-}
-
 .submit-button {
-  padding-top: 40px;
+  padding-top: 48vh;
   padding-left: 120px;
   grid-column: 4;
   grid-row: 9;
@@ -171,4 +152,50 @@ li a:hover {
   height: 300px;
   margin-top: -1vw;
   padding: 0;
+}
+
+#after-post {
+  display: none;
+}
+
+.exact-header {
+  text-align: center;
+  grid-column-start: 2;
+  grid-column-end: 7;
+  grid-row: 3;
+}
+
+.close-header {
+  text-align: center;
+  grid-column-start: 2;
+  grid-column-end: 7;
+  grid-row: 9;
+}
+
+#dog1 {
+  grid-column: 3;
+  grid-row: 5;
+  display: inline;
+}
+
+#dog2 {
+  grid-column: 3;
+  grid-row: 11;
+  display: inline;
+}
+
+#dog3 {
+  grid-column: 3;
+  grid-row: 13;
+  display: inline;
+}
+
+#dog4 {
+  grid-column: 3;
+  grid-row: 15;
+  display: inline;
+}
+
+.dog-image {
+  height: 10vh;
 }

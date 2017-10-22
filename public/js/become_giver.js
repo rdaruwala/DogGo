@@ -34,8 +34,8 @@ function submitValues(){
 
     console.log('data: ' + JSON.stringify(data));
 
-    $.post('http://doggo.run/tag', data, function (result) {
-      console.log(result);
+    $.post('http://doggo.run/storegiver', data, function (result) {
+      window.location.href = '/success.html';
     });
 
     // data.append('myFile.jpg', $('#petPicToUpload').prop('files')[0]);

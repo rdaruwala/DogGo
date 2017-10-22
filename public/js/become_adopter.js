@@ -1,26 +1,63 @@
+var fileName = "";
+
 function submitValues(){
-  OwnerFirst = document.getElementById('firstName').value;
-  OwnerMid = document.getElementById('midInit').value;
-  OwnerLast = document.getElementById('lastName').value;
-  Email = document.getElementById('email').value;
-  Phone = document.getElementById('phoneNum').value;
-  Address = document.getElementById('address').value;
-  ZipCode = document.getElementById('zipCode').value;
-  PetName = document.getElementById('petName').value;
   PetSpecies = document.getElementById('petSpecies').value;
   PetBreed = document.getElementById('petBreed').value;
+  Length = document.getElementById('length').value;
   
-  Image = document.getElementById('petPicToUpload');
-  
-  if(!(OwnerFirst && OwnerMid && OwnerLast && Email && Phone && Address && ZipCode && PetName && PetSpecies && PetBreed)) {
-    alert("Please submit all the required fields");
-  }
-  else{
-    var data = $('form').serialize();
-    
-    $.post('http://junesky.org/parse/classes/GiverInfo', data, function (result) {
-      console.log(result);
+  if(url != "") {
+    var data = {
+      URL: url
+    }
+
+    console.log('data: ' + JSON.stringify(data));
+
+    $.post('http://doggo.run/adopternetwork', data, function (result) {
+      var returnedData = JSON.parse(result);
+      if (returnedData.exactMatches.length > 0 || returnedData.closeMatches.length > 0) {
+        console.log('returnedData: ' + JSON.stringify(returnedData));
+        document.getElementById('before-post').display = none;      
+        document.getElementById('after-post').display = block;    
+      } else {
+        window.location.href = '/failure.html';
+      }
     });
+
+  } else if (PetSpecies && PetBreed && Length) {
+    var data = {
+      PetSpecies: PetSpecies,
+      PetBreed: PetBreed,
+      Length: Length
+    }
+
+    console.log('data: ' + JSON.stringify(data));
+
+    $.post('http://doggo.run/adopterexact', data, function (result) {
+      console.log('result: ' + result);
+      var returnedData = JSON.parse(result);
+      console.log(returnedData);
+      if (returnedData['Exact List'].length > 0 || returnedData['Sim List'].length > 0) {
+        console.log('returnedData: ' + JSON.stringify(returnedData));
+        for (var i = 0; i < 1; i++) {
+          document.getElementById('dog' + (i + 1)).innerHTML =
+            '<img class="dog-image" src=' + returnedData['Exact List'][i].Image + '/>' +
+            '<h3>' + returnedData['Exact List'][i]['Pet Name'] + '</h3>'
+        }
+
+        for (var i = 0; i < 3; i++) {
+          document.getElementById('dog' + (i + 2)).innerHTML =
+            '<img class="dog-image" src=' + returnedData['Sim List'][i].Image + '/>' +
+            '<h3>' + returnedData['Sim List'][i]['Pet Name'] + '</h3>'
+        }
+        document.getElementById('before-post').style.display = 'none';      
+        document.getElementById('after-post').style.display = 'block';    
+      } else {
+        window.location.href = '/failure.html';
+      }
+    });
+
+  } else {
+    alert("Please submit all the required fields");
   }
 }
 
